@@ -18,6 +18,10 @@ contract SimpleStorage {
 // Storing numbers this way ☝🏾 means you have to write this line for every friend; a better way:
     Person[] public listOfPeople;
 
+//created a mapping data structure to make finding names and values easier; now you can just type a name to find it instead of the index number
+    mapping(string => uint256) public nameToFavouriteNumber;
+
+
     function store (uint256 _favouriteNumber) public {
         myfavouriteNumber = _favouriteNumber;
     }
@@ -29,6 +33,7 @@ contract SimpleStorage {
 // this function takes inputs and stores them in the name & favouriteNumber variables above
     function addPerson(string memory _name, uint256 _favouriteNumber) public {
         listOfPeople.push( Person(_favouriteNumber, _name));
+        nameToFavouriteNumber[_name] = _favouriteNumber;
 //.push() is a built-in function that arrays have; it's saying: for whatver values are inputed in `_name` & `_favouriteNumber`, "push" them to the prev. defined varibale
     }
 }
